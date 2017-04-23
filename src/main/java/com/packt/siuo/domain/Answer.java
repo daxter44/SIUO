@@ -21,62 +21,62 @@ public class Answer {
 	public String getAnswerId(){
 		return answerId;
 	}
-	private void setAnswerId(String answerId){
+	public void setAnswerId(String answerId){
 		this.answerId = answerId;
 	}
 	public String getExerciseId(){
 		return exerciseId;
 	}
-	private void setExerciseId(String exerciseId){
+	public void setExerciseId(String exerciseId){
 		this.exerciseId = exerciseId;
 	}
 	public String getUserId(){
 		return userId;
 	}
-	private void setUserId(String userId){
+	public void setUserId(String userId){
 		this.userId =  userId;
 	}
 	public String getLanguage(){
 		return language;
 	}
-	private void setLanguage(String language){
+	public void setLanguage(String language){
 
 		this.language = language;
 	}
 	public String getCode(){
 		return code;
 	}
-	private void setCode(String code){
+	public void setCode(String code){
 		this.code = code;
 	}
 	public Date getDate(){
 		return date;
 	}
-	private void setDate(){
+	public void setDate(){
 		date = new Date();
 	}
 	public Date getUsedTime(){
 		return usedTime;
 	}
-	private void setUsedTime(Date usedTime){
+	public void setUsedTime(Date usedTime){
 		this.usedTime = usedTime;
 	}
 	public int getUsedMemory(){
 		return usedMemory;
 	}
-	private void setUsedMemory(int usedMemory){
+	public void setUsedMemory(int usedMemory){
 		this.usedMemory = usedMemory;
 	}
 	public String getJudgeResult(){
 		return judgeResult;
 	}
-	private void setJudgeLog(String judgeLog){
+	public void setJudgeLog(String judgeLog){
 		this.judgeLog = judgeLog;
 	}	
 	public String getJudgeLog(){
 		return judgeLog;
 	}
-	private void setJudgeResult(String judgeResult){
+	public void setJudgeResult(String judgeResult){
 		this.judgeResult = judgeResult;
 	}
 	public Answer (){
@@ -88,6 +88,19 @@ public class Answer {
 		this.code=code;
 		//setLanguage("java");
 	}
+	public Answer(String exerciseId, String userId) {
+		this.exerciseId = exerciseId;
+		this.userId = userId;
+		
+	}
+	
+	public Answer(String exerciseId, String userId, String language, String code) {
+		this.exerciseId = exerciseId;
+		this.userId = userId;
+		this.language = language;
+		this.code = code;
+	}
+	
 	
 	/*public Answer(String exerciseId, String userId,  String language, String code){
 		//setAnswerId(answerId);

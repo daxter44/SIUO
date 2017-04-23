@@ -109,12 +109,9 @@ public String processAddNewExerciseForm(@ModelAttribute("newExercise") @Valid Ex
 }
 @RequestMapping(value="/createAnswer", method = RequestMethod.GET)
 public String getCreateNewAnswer(@RequestParam("id") String exerciseId, Model model){
-	String userId = "U1";
+	//String userId = "U1";	
 	model.addAttribute("exercise", exerciseService.getExerciseById(exerciseId));
 	Answer newAnswer = new Answer();
-
-	
- 
 	model.addAttribute("newAnswer", newAnswer);
 	return "addAnswer";
 }
@@ -123,6 +120,9 @@ public String getCreateNewAnswer(@RequestParam("id") String exerciseId, Model mo
 @RequestMapping(value="/createAnswer", method = RequestMethod.POST)
 public String processCreateNewAnswer(@RequestParam("id") String exerciseId, @ModelAttribute("newAnswer") @Valid Answer newAnswer , BindingResult result, Model model) {
 	//model.addAttribute("addAnswer", exerciseService.getExerciseById(exerciseId));
+	String userId ="U1";
+	//newAnswer.setUserId(userId);
+	//newAnswer.setExerciseId(exerciseId);
 	String[] suppressedFields = result.getSuppressedFields();
 	if(suppressedFields.length > 0){
 		throw new RuntimeException("Próba wi¹zania niedozwolonych pól:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -130,8 +130,12 @@ public String processCreateNewAnswer(@RequestParam("id") String exerciseId, @Mod
 	if(result.hasErrors()){
 		return "addAnswer";
 	}
+	
 	logger.info("kod :" + newAnswer.getCode()+ "jezeli nic nie ma to null");
+	newAnswer.setExerciseId(exerciseId);
+	newAnswer.setUserId(userId);
 	answerService.addAnswer(newAnswer);
+	logger.info("kod :" + newAnswer.getCode()+ "wykonalem service");
 	
 	return "redirect:/exercises";
 }

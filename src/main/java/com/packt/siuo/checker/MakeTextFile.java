@@ -49,8 +49,8 @@ public class MakeTextFile
 	    	logger.info("im here 2 ");
 	    	BufferedWriter f = null;
 	        try {
-	            f = new BufferedWriter(new FileWriter("C://exercises//" + "a.txt"));
-	            f.write("haha");
+	            f = new BufferedWriter(new FileWriter("C://exercises//" + fName));
+	            f.write(code);
 	            f.close();  
 	           // logger.info("utworzy³em plik: "+ code);
 	        }catch(IOException e) {

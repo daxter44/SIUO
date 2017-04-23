@@ -32,10 +32,11 @@ public class AnswerServiceImpl implements AnswerService {
 	public void addAnswer(Answer answer){
 		
 		logger.info("kod :" + answer.getCode()+ "jezeli nic nie ma to null");
+		answerRepository.addAnswer(answer);
 		MakeTextFile makeTextFile = new MakeTextFile(answer.getUserId(), answer.getExerciseId(), answer.getCode(), answer.getLanguage());
 		
 		
-		answerRepository.addAnswer(answer);
+		//answerRepository.addAnswer(answer);
 	}
 	
 	

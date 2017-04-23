@@ -23,7 +23,7 @@ public class MakeTextFile
 	 
 
 	
-	    private HttpServletRequest request;
+	   
 	    Logger logger = Logger.getLogger(this.getClass());
 	 
 	 
@@ -35,26 +35,27 @@ public class MakeTextFile
 	    
 
 
-	    public MakeTextFile(String userId, String exerciseId, String code, String language) 
+	    public MakeTextFile(String path, String fName) 
 	    {
-	        path = "C://exercises//";
-	        fName = "a"+ userId + "e"+ exerciseId+ ".java";
-	        logger.info("im here");
-	        WriteFile(code);
+	        this.path = path;
+	        this.fName = fName;
 	      
 	    }
 	    
 	    public void WriteFile(String code) 
 	    {
-	    	logger.info("im here 2 ");
 	    	BufferedWriter f = null;
 	        try {
-	            f = new BufferedWriter(new FileWriter("C://exercises//" + fName));
+	            f = new BufferedWriter(new FileWriter(path + fName));
 	            f.write(code);
 	            f.close();  
-	           // logger.info("utworzy³em plik: "+ code);
+	            logger.info("utworzy³em plik: "+ fName + "w lokalizacji: "+ path);
+	            
+	           // return fName;
+	            
 	        }catch(IOException e) {
 	            System.out.println(e);
+	            //return fName ;
 	        }
 	       
 	}

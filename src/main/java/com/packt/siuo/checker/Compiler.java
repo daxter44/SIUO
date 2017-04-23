@@ -8,20 +8,25 @@ import java.io.InputStreamReader;
 import com.packt.siuo.checker.Verdict;
 
 public class Compiler {
-	String fName;
 	
-	public Compiler(String userId, String exerciseId){
+	String path = "";
+    String fName ="";
+	
+	public Compiler(String path, String fName){
 		
-		 fName = "u"+ userId + "e"+ exerciseId+ ".java";
+		// fName = "u"+ userId + "e"+ exerciseId+ ".java";
+		this.path = path;
+		this.fName = fName;
 		
 	}
 	
-	public String compile( String path, String fName) {
+	public String compile() {
         System.out.println("Code compilation started...");
         ProcessBuilder p;
         boolean compiled = true;
 
-            p = new ProcessBuilder("javac", fName +".java");
+            p = new ProcessBuilder("javac", fName );
+            
 
         p.directory(new File(path));
         p.redirectErrorStream(true);

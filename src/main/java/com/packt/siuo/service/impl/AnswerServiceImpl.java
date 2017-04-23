@@ -31,49 +31,21 @@ public class AnswerServiceImpl implements AnswerService {
 	
 	public void addAnswer(Answer answer){
 		
-		logger.info("kod :" + answer.getCode()+ "jezeli nic nie ma to null");
+		
 		answerRepository.addAnswer(answer);
-		MakeTextFile makeTextFile = new MakeTextFile(answer.getUserId(), answer.getExerciseId(), answer.getCode(), answer.getLanguage());
-		
-		
+		answer.setfName();
+		answer.setPath();
+		MakeTextFile makeTextFile = new MakeTextFile(answer.getPath(), answer.getfName());
+		makeTextFile.WriteFile(answer.getCode());
+		Compiler compiler = new Compiler(answer.getPath(), answer.getfName());
+		compiler.compile();
 		//answerRepository.addAnswer(answer);
 	}
 	
 	
 	
 	
-	/*public String createAnswer(String exerciseId, String userId, 
-			String languageSlug, String code) {
-		Exercise exercise = exerciseRepository.getExerciseById(exerciseId);
-		//Language language = languageMapper.getLanguageUsingSlug(languageSlug);
-		
-		Answer answer = new Answer(exerciseId, userId, "java", code);
-		Compile(userId, exerciseId, code, languageSlug);
-		
-		//@SuppressWarnings("unchecked")
-		//	Map<String, Object> result = (Map<String, Object>) getSubmissionCreationResult(submission, isCsrfTokenValid);
-		//boolean isSuccessful = (Boolean)result.get("isSuccessful");
-		//if ( isSuccessful ) {
-			/*submissionMapper.createSubmission(submission);
-			
-			long submissionId = submission.getSubmissionId();
-			createSubmissionTask(submissionId);
-			result.put("submissionId", submissionId);
-		}
-		return "sukces";
-	}
-	public boolean Compile(String userId, String exerciseId, String code, String language){
-		try {
-		MakeTextFile makeTextFile = new MakeTextFile(userId, exerciseId, code, language);
-		Compiler c = new Compiler(userId, exerciseId);
-		logger.info("Kompilowanie powiod³o siê");
-		return true;
-		}
-		catch(Exception e){
-			logger.info("Kompilowanie nie powiod³o siê ");
-			return false;
-		}
-	}*/
+	
 	
 	
 

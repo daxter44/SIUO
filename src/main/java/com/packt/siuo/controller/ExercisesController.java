@@ -131,7 +131,7 @@ public String processCreateNewAnswer(@RequestParam("id") String exerciseId, @Mod
 		return "addAnswer";
 	}
 	
-	logger.info("kod :" + newAnswer.getCode()+ "jezeli nic nie ma to null");
+	
 	newAnswer.setExerciseId(exerciseId);
 	newAnswer.setUserId(userId);
 	answerService.addAnswer(newAnswer);

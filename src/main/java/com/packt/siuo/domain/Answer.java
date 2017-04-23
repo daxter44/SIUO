@@ -2,6 +2,8 @@ package com.packt.siuo.domain;
 
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 import com.packt.siuo.checker.MakeTextFile;
 import com.packt.siuo.checker.Compiler;
 
@@ -17,6 +19,9 @@ public class Answer {
 	private int usedMemory;
 	private String judgeResult;
 	private String judgeLog;
+	private String fName;
+	private String path;
+	Logger logger = Logger.getLogger(this.getClass());
 	
 	public String getAnswerId(){
 		return answerId;
@@ -79,18 +84,33 @@ public class Answer {
 	public void setJudgeResult(String judgeResult){
 		this.judgeResult = judgeResult;
 	}
-	public Answer (){
+	public String getfName(){
+		return fName;
+	}
+	public void setfName(){
+		this.fName = "a"+ userId + "e"+ exerciseId+ ".java";		
+	}
+	public String getPath(){
+		return path;
+	}
+	public void setPath(){
+		this.path = "C://exercises//";
+	}
+	public Answer(){
 		super();
+		//logger.info("No czeœæ 2 ");
 	}
 	
 	public Answer(String code){
 		
 		this.code=code;
+		logger.info("No czeœæ 3 ");
 		//setLanguage("java");
 	}
 	public Answer(String exerciseId, String userId) {
 		this.exerciseId = exerciseId;
 		this.userId = userId;
+		logger.info("No czeœæ 1 ");
 		
 	}
 	
@@ -99,23 +119,9 @@ public class Answer {
 		this.userId = userId;
 		this.language = language;
 		this.code = code;
+		logger.info("No czeœæ 4 ");
 	}
 	
-	
-	/*public Answer(String exerciseId, String userId,  String language, String code){
-		//setAnswerId(answerId);
-		setUserId(userId);
-		setExerciseId(exerciseId);
-		setLanguage(language);
-		setCode(code);
-	
-		//c.compile();	
-		 * 
-		 * String exerciseId, String userId, 	
-		 * 
-		 * this.exerciseId=exerciseId;
-		this.userId=userId;
-	}*/
 	@Override 
 	public boolean equals(Object obj){
 		if(this == obj)

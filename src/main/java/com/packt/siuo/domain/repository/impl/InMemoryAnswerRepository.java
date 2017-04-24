@@ -19,4 +19,7 @@ public class InMemoryAnswerRepository implements AnswerRepository {
 	public void addAnswer(Answer answer){
 		listOfAnswers.add(answer);
 	}
+	public List<Answer> getAllAnswers(){
+		return listOfAnswers;
+	}
 }

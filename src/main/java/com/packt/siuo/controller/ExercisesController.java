@@ -38,7 +38,7 @@ import com.packt.siuo.exception.*;
 @RequestMapping("/exercises")
 public class ExercisesController {
 
-    Logger logger = Logger.getLogger(this.getClass());
+Logger logger = Logger.getLogger(this.getClass());
  
 @Autowired
 @Qualifier("exerciseService")
@@ -47,8 +47,6 @@ private ExerciseService exerciseService;
 @Autowired
 @Qualifier("answerService")
 private AnswerService answerService;
-
-private static String UPLOADED_FOLDER = "F://temp//";
 	
 	
 @RequestMapping
@@ -109,7 +107,6 @@ public String processAddNewExerciseForm(@ModelAttribute("newExercise") @Valid Ex
 }
 @RequestMapping(value="/createAnswer", method = RequestMethod.GET)
 public String getCreateNewAnswer(@RequestParam("id") String exerciseId, Model model){
-	//String userId = "U1";	
 	model.addAttribute("exercise", exerciseService.getExerciseById(exerciseId));
 	Answer newAnswer = new Answer();
 	model.addAttribute("newAnswer", newAnswer);
@@ -119,10 +116,7 @@ public String getCreateNewAnswer(@RequestParam("id") String exerciseId, Model mo
 
 @RequestMapping(value="/createAnswer", method = RequestMethod.POST)
 public String processCreateNewAnswer(@RequestParam("id") String exerciseId, @ModelAttribute("newAnswer") @Valid Answer newAnswer , BindingResult result, Model model) {
-	//model.addAttribute("addAnswer", exerciseService.getExerciseById(exerciseId));
-	String userId ="U1";
-	//newAnswer.setUserId(userId);
-	//newAnswer.setExerciseId(exerciseId);
+	String userId ="U1";	
 	String[] suppressedFields = result.getSuppressedFields();
 	if(suppressedFields.length > 0){
 		throw new RuntimeException("Próba wi¹zania niedozwolonych pól:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
@@ -131,13 +125,12 @@ public String processCreateNewAnswer(@RequestParam("id") String exerciseId, @Mod
 		return "addAnswer";
 	}
 	
-	
 	newAnswer.setExerciseId(exerciseId);
 	newAnswer.setUserId(userId);
 	answerService.addAnswer(newAnswer);
 	logger.info("kod :" + newAnswer.getCode()+ "wykonalem service");
 	
-	return "redirect:/exercises";
+	return "redirect:/answers";
 }
 @ExceptionHandler(ExerciseNotFoundException.class)
 public ModelAndView handleError(HttpServletRequest req, ExerciseNotFoundException exception) {

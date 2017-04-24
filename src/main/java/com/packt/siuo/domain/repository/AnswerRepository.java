@@ -8,5 +8,6 @@ public interface AnswerRepository {
 	
 	void addAnswer(Answer answer);
 	List<Answer> getAllAnswers();
+	public Answer getAnswerById(String answerId);
 
 }

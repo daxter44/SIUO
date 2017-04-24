@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.packt.siuo.domain.Answer;
 import com.packt.siuo.domain.Exercise;
 import com.packt.siuo.domain.repository.AnswerRepository;
+import com.packt.siuo.exception.ExerciseNotFoundException;
 
 @Repository
 @Qualifier("answerService")
@@ -21,5 +22,18 @@ public class InMemoryAnswerRepository implements AnswerRepository {
 	}
 	public List<Answer> getAllAnswers(){
 		return listOfAnswers;
+	}
+	public Answer getAnswerById(String answerId) {
+		Answer answerById = null;
+		for(Answer answer : listOfAnswers){
+			if(answer!=null && answer.getAnswerId()!=null && answer.getAnswerId().equals(answerId)){
+				answerById = answer;
+				break;
+			}
+		}
+		if(answerById == null) {
+			throw new ExerciseNotFoundException(answerId);
+		}
+		return answerById;
 	}
 }

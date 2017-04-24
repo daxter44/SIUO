@@ -3,7 +3,6 @@ package com.packt.siuo.service.impl;
 import javax.annotation.Resource;
 
 import org.apache.commons.logging.Log;
-//import org.hibernate.validator.internal.util.logging.Log_.logger;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,9 +32,10 @@ public class AnswerServiceImpl implements AnswerService {
 	public void addAnswer(Answer answer){
 		
 		
-		answerRepository.addAnswer(answer);
+		//answerRepository.addAnswer(answer);
 		answer.setfName();
 		answer.setPath();
+		answer.setAnswerId();
 		MakeTextFile makeTextFile = new MakeTextFile(answer.getPath(), answer.getfName());
 		makeTextFile.WriteFile(answer.getCode());
 		Compiler compiler = new Compiler(answer.getPath(), answer.getfName());
@@ -46,8 +46,12 @@ public class AnswerServiceImpl implements AnswerService {
 		String werdykt2 = match.match(answer.getExerciseId(), answer.getUserId(), answer.getPath());
 		logger.info(werdykt);
 		logger.info(werdykt2);
+		answer.setJudgeLog(werdykt);
 		answer.setJudgeResult(werdykt2);
 		answerRepository.addAnswer(answer);
+	}
+	public Answer getAnswerById(String answerId){
+		return answerRepository.getAnswerById(answerId);
 	}
 	
 	

@@ -12,6 +12,7 @@
 <body>
 <section>
 <div class="jumbotron">
+<a href="../siuo/exercises/add" class="btn btn-info btn-large pull-right"><span class="glyphicon-save glyphicon"></span>Dodaj zadanie</a>
 <div class="containter">
 <h1>Zadania</h1>
 <p>Wszystkie zadania dostępne w naszym systemie</p>
@@ -33,7 +34,6 @@
 </div>
 </c:forEach>
 </div>
-
 </section>
 </body>
 </html>

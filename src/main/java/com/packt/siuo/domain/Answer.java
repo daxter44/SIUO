@@ -28,8 +28,9 @@ public class Answer {
 	public String getAnswerId(){
 		return answerId;
 	}
-	public void setAnswerId(String answerId){
-		this.answerId = answerId;
+	public void setAnswerId(){
+		this.answerId=userId+exerciseId;
+		
 	}
 	public String getExerciseId(){
 		return exerciseId;
@@ -109,6 +110,7 @@ public class Answer {
 	}
 	public Answer(){
 		super();
+		setDate();
 		//logger.info("No czeœæ 2 ");
 	}	
 	public Answer(String code){

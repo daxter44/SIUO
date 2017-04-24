@@ -1,5 +1,6 @@
 package com.packt.siuo.domain;
 
+import java.io.File;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -14,6 +15,7 @@ public class Answer {
 	private String exerciseId;
 	private String language;
 	private String code;
+	private String baseClassName;
 	private Date date;
 	private Date usedTime;
 	private int usedMemory;
@@ -88,19 +90,27 @@ public class Answer {
 		return fName;
 	}
 	public void setfName(){
-		this.fName = "a"+ userId + "e"+ exerciseId+ ".java";		
+		this.fName = baseClassName+ ".java";		
+	}
+	public String getBaseClassName(){
+		return baseClassName;
+	}
+	public void setBaseClassName(String baseClassName){
+		this.baseClassName = baseClassName;		
 	}
 	public String getPath(){
 		return path;
 	}
 	public void setPath(){
-		this.path = "C://exercises//";
+		this.path = "C://siuo//answers//"+userId+"//"+exerciseId+"//";
+		File file = new File(path+"a.txt");
+		file.getParentFile().mkdirs();
+		logger.info("utworzylem sciezkê: " +path);
 	}
 	public Answer(){
 		super();
 		//logger.info("No czeœæ 2 ");
-	}
-	
+	}	
 	public Answer(String code){
 		
 		this.code=code;
@@ -109,9 +119,7 @@ public class Answer {
 	}
 	public Answer(String exerciseId, String userId) {
 		this.exerciseId = exerciseId;
-		this.userId = userId;
-		logger.info("No czeœæ 1 ");
-		
+		this.userId = userId;		
 	}
 	
 	public Answer(String exerciseId, String userId, String language, String code) {
@@ -119,7 +127,6 @@ public class Answer {
 		this.userId = userId;
 		this.language = language;
 		this.code = code;
-		logger.info("No czeœæ 4 ");
 	}
 	
 	@Override 
@@ -143,10 +150,6 @@ public class Answer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((answerId == null) ? 0 : answerId.hashCode());
-		return result;
-			
-		
-	}
-	
-	
+		return result;		
+	}	
 }

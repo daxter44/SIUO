@@ -36,7 +36,13 @@
 <form:form modelAttribute="newAnswer" class="form-horizontal">
 <fieldset>
 <div class="form-group">
-<label class="control-label col-lg-2" for="code">Kod:</label>
+<label class="control-label col-lg-2 col-lg-2" for="baseClassName">Nazwa klasy bazowej: </label>
+<div class="col-lg-10">
+<form:input id="baseClassName" path="baseClassName" type="text" class="form:input-large"/>
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-lg-2" for="code">Kod: </label>
 <div class="col-lg-5">
 <form:textarea id="code" path="code" rows = "15"/>
 </div>

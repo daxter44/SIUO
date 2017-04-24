@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.packt.siuo.checker.Compiler;
+import com.packt.siuo.checker.Execution;
 import com.packt.siuo.checker.MakeTextFile;
+import com.packt.siuo.checker.Match;
 import com.packt.siuo.domain.Answer;
 import com.packt.siuo.domain.Exercise;
 import com.packt.siuo.domain.User;
@@ -22,10 +24,9 @@ import com.packt.siuo.service.AnswerService;
 @Qualifier("answerService")
 public class AnswerServiceImpl implements AnswerService {
 	
-	/*@Autowired*/
 	@Resource
 	AnswerRepository answerRepository;
-	//ExerciseRepository exerciseRepository;
+	
 	Logger logger = Logger.getLogger(this.getClass());
 	
 	
@@ -39,7 +40,14 @@ public class AnswerServiceImpl implements AnswerService {
 		makeTextFile.WriteFile(answer.getCode());
 		Compiler compiler = new Compiler(answer.getPath(), answer.getfName());
 		compiler.compile();
-		//answerRepository.addAnswer(answer);
+		Execution execution = new Execution();
+		String werdykt = execution.execute("java", 1000 , answer.getPath(), answer.getBaseClassName());
+		Match match = new Match();
+		String werdykt2 = match.match(answer.getExerciseId(), answer.getUserId(), answer.getPath());
+		logger.info(werdykt);
+		logger.info(werdykt2);
+		answer.setJudgeResult(werdykt2);
+		answerRepository.addAnswer(answer);
 	}
 	
 	

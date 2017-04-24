@@ -18,15 +18,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class MakeTextFile
-{
+{	    
+	Logger logger = Logger.getLogger(this.getClass());
+	 
 	
-	 
-
-	
-	   
-	    Logger logger = Logger.getLogger(this.getClass());
-	 
-	 
 	 int i;
 	    FileInputStream fin;
 	    String path = "";
@@ -38,8 +33,7 @@ public class MakeTextFile
 	    public MakeTextFile(String path, String fName) 
 	    {
 	        this.path = path;
-	        this.fName = fName;
-	      
+	        this.fName = fName;	      
 	    }
 	    
 	    public void WriteFile(String code) 
@@ -50,12 +44,10 @@ public class MakeTextFile
 	            f.write(code);
 	            f.close();  
 	            logger.info("utworzy³em plik: "+ fName + "w lokalizacji: "+ path);
-	            
-	           // return fName;
-	            
+	         
 	        }catch(IOException e) {
 	            System.out.println(e);
-	            //return fName ;
+	           
 	        }
 	       
 	}

@@ -39,15 +39,16 @@ public class AnswerServiceImpl implements AnswerService {
 		MakeTextFile makeTextFile = new MakeTextFile(answer.getPath(), answer.getfName());
 		makeTextFile.WriteFile(answer.getCode());
 		Compiler compiler = new Compiler(answer.getPath(), answer.getfName());
-		compiler.compile();
+		String werdykt = compiler.compile();
 		Execution execution = new Execution();
-		String werdykt = execution.execute("java", 1000 , answer.getPath(), answer.getBaseClassName());
+		String werdykt2 = execution.execute("java", 1000 , answer.getPath(), answer.getBaseClassName());
 		Match match = new Match();
-		String werdykt2 = match.match(answer.getExerciseId(), answer.getUserId(), answer.getPath());
+		String werdykt3 = match.match(answer.getExerciseId(), answer.getUserId(), answer.getPath());
 		logger.info(werdykt);
 		logger.info(werdykt2);
-		answer.setJudgeLog(werdykt);
-		answer.setJudgeResult(werdykt2);
+		answer.setCompilerLog(werdykt);
+		answer.setExecutionLog(werdykt2);
+		answer.setJudgeResult(werdykt3);
 		answerRepository.addAnswer(answer);
 	}
 	public Answer getAnswerById(String answerId){

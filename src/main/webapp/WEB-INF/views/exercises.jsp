@@ -13,6 +13,7 @@
 <section>
 <div class="jumbotron">
 <a href="../siuo/exercises/add" class="btn btn-info btn-large pull-right"><span class="glyphicon-save glyphicon"></span>Dodaj zadanie</a>
+<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">Wyloguj się</a>
 <div class="containter">
 <h1>Zadania</h1>
 <p>Wszystkie zadania dostępne w naszym systemie</p>

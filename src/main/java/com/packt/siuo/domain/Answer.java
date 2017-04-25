@@ -20,7 +20,8 @@ public class Answer {
 	private Date usedTime;
 	private int usedMemory;
 	private String judgeResult;
-	private String judgeLog;
+	private String compilerLog;
+	private String executionLog;
 	private String fName;
 	private String path;
 	Logger logger = Logger.getLogger(this.getClass());
@@ -78,15 +79,21 @@ public class Answer {
 	public String getJudgeResult(){
 		return judgeResult;
 	}
-	public void setJudgeLog(String judgeLog){
-		this.judgeLog = judgeLog;
-	}	
-	public String getJudgeLog(){
-		return judgeLog;
-	}
 	public void setJudgeResult(String judgeResult){
 		this.judgeResult = judgeResult;
 	}
+	public void setCompilerLog(String compilerLog){
+		this.compilerLog = compilerLog;
+	}	
+	public String getCompilerLog(){
+		return compilerLog;
+	}
+	public void setExecutionLog(String executionLog){
+		this.executionLog = executionLog;
+	}	
+	public String getExecutionLog(){
+		return executionLog;
+	}	
 	public String getfName(){
 		return fName;
 	}

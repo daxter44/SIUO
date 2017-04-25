@@ -23,6 +23,7 @@ public class Compiler {
 	public String compile() {
         System.out.println("Code compilation started...");
         ProcessBuilder p;
+        String temp = " ";
         boolean compiled = true;
 
             p = new ProcessBuilder("javac", fName );
@@ -34,7 +35,7 @@ public class Compiler {
         try {
             Process pp = p.start();
             InputStream is = pp.getInputStream();
-            String temp;
+            //String temp;
             try (BufferedReader b = new BufferedReader(new InputStreamReader(is))) {
                 while ((temp = b.readLine()) != null) {
                     compiled = false;
@@ -45,7 +46,7 @@ public class Compiler {
 
             if (!compiled) {
                 is.close();
-                return Verdict.COMPILE_ERROR;
+                return Verdict.COMPILE_ERROR +" "+ temp ;
             }
             is.close();
             return Verdict.COMPILE_SUCCESS;
@@ -53,7 +54,7 @@ public class Compiler {
         } catch (IOException | InterruptedException e) {
             System.out.println("in compile() " + e);
         }
-        return Verdict.COMPILE_ERROR;
+        return Verdict.COMPILE_ERROR + " "+temp;
     }
 
 }

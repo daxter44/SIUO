@@ -23,7 +23,7 @@
 <div class="caption">
 <h3>Zadanie: ${answer.exerciseId}</h3>
 <h2>Uzytkownik: ${answer.userId}</h2>
-<p>${answer.judgeLog}
+<p>${answer.executionLog}
 <p>${answer.judgeResult}</p>
 <p><a href="<spring:url value="/answers/answer?id=${answer.answerId}"/>" class="btn btn-primary"><span class="glyphicon-info-sign glyphicon" /></span> Szegóły</a>
 </div>

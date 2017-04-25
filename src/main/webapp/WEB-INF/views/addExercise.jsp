@@ -40,7 +40,7 @@
 </div>
 </div>
 <div class="form-group">
-<label class="control-label col-lg-2 col-lg-2" for="language"><spring:message code="addExercise.form.language.label"/></label>
+<label class="control-label col-lg-2 col-lg-2" for="language">Język</label>
 <div class="col-lg-10">
 <form:input id="language" path="language" type="text" class="form:input-large"/>
 </div>

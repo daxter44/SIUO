@@ -19,6 +19,6 @@ public String loginerror(Model model) {
 @RequestMapping(value="logout", method = RequestMethod.GET)
 public String logout(Model model) {
 	
-	return "login";
+	return "logout";
 }
 }

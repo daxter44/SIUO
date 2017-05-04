@@ -7,5 +7,5 @@ import com.packt.siuo.domain.User;
 
 public interface UserService {
 
-	List<User> getAllUsers();
+	Iterable<User> getAllUsers();
 }

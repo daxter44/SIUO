@@ -16,7 +16,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public List<User> getAllUsers(){
-		return userRepository.getAllUsers();
+	public Iterable<User> getAllUsers(){
+		return userRepository.findAll();
+		//return userRepository.findAll();
 	}
 }

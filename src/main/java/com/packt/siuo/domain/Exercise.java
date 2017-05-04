@@ -1,22 +1,34 @@
 package com.packt.siuo.domain;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
 
 
 @XmlRootElement
+@Entity
 public class Exercise {
 
 	@Pattern(regexp="Z[0-9]+", message="{Pattern.Exercise.exerciseId.validation}")
+	@Id
 	private String exerciseId;
+	@Id
 	private String language;
 	@Size(min=4, max=30, message="{Pattern.Exercise.name.validation}")
+	@Id
 	private String name;
+	@Id
 	private String description;
+	@Id
 	private String in;
+	@Id
 	private String out;
+	@Id
 	private String example;
+	@Id
 	private String course;
+	@Id
 	private String dificulty;
 	
 	

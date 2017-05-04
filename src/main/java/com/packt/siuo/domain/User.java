@@ -1,13 +1,24 @@
 package com.packt.siuo.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.*;
+
+@Entity
 public class User {
 	
+	@Id
 	private int userId;
+	 @Column(name="name")
 	private String name;
+	 @Column(name="surname")
 	private String surname;
+	//@Column(name="course")
 	private String course;
+	//@Column(name="year")
 	private int year;
+	//@Column(name="no_of_exercises_made")
 	private String noOfExercisesMade;
+	//@Column(name="status")
 	private String status;
 	
 	public User() {
